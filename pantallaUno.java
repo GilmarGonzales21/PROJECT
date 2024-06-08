@@ -36,13 +36,6 @@ public class pantallaUno extends JFrame implements ActionListener {
         label1.setForeground(new Color(177, 60, 37));
         add(label1);
 
-        // Crear y configurar la segunda etiqueta de texto
-        label2 = new JLabel("@2024 USIL");
-        label2.setBounds(140, 540, 300, 30);
-        label2.setFont(new Font("Andale Mono", Font.BOLD | Font.ITALIC, 12));
-        label2.setForeground(new Color(177, 60, 37));
-        add(label2);
-
         // Crear el panel que contendrá las noticias
         JPanel newsPanel = new JPanel();
         newsPanel.setLayout(new BoxLayout(newsPanel, BoxLayout.Y_AXIS));
@@ -56,7 +49,7 @@ public class pantallaUno extends JFrame implements ActionListener {
 
         // Crear el JScrollPane con el panel de noticias y configurar el scroll vertical
         scrollPane = new JScrollPane(newsPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBounds(30, 170, 300, 300); // Establecer la posición y el tamaño
+        scrollPane.setBounds(0, 170, 350, 435); // Establecer la posición y el tamaño
         add(scrollPane); // Agregar el JScrollPane al panel principal
     }
 
