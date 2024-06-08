@@ -19,18 +19,19 @@ public class pantallaPrincipal extends JFrame implements ActionListener {
         setLayout(null);
 
         // Crear y configurar la primera etiqueta de texto
-        label1 = new JLabel("Hogar");
-        label1.setBounds(35, 135, 300, 30);
-        label1.setFont(new Font("", 2, 18));
-        label1.setForeground(new Color(255, 0, 0));
+        label1 = new JLabel("HOGAR");
+        label1.setBounds(25, 60, 300, 80);
+        label1.setFont(new Font("Playground", 1, 89));
+        label1.setForeground(new Color(177, 60, 37));
         add(label1);
 
         // Crear y configurar la segunda etiqueta de texto
         label2 = new JLabel("@2024 USIL");
-        label2.setBounds(85, 375, 300, 30);
-        label2.setFont(new Font("Andale Mono", 1, 12));
-        label2.setForeground(new Color(255, 255, 255));
+        label2.setBounds(140, 410, 300, 300);
+        label2.setFont(new Font("Andale Mono", 3, 12));
+        label2.setForeground(new Color(177, 60, 37));
         add(label2);
+    
         // Crear el botón personalizado, establecer su posición y tamaño, y agregarlo al panel
         boton1 = new CircularButton();
         boton1.setBounds(30, 170, 300, 300); // Centrar el botón en el panel con un tamaño de 300x300
@@ -50,7 +51,8 @@ public class pantallaPrincipal extends JFrame implements ActionListener {
     // Método principal para iniciar la aplicación
     public static void main(String args[]) {
         pantallaPrincipal principal = new pantallaPrincipal(); // Crear una instancia de la clase pantallaPrincipal
-        principal.setBounds(0, 0, 360, 640); // Establecer el tamaño del marco
+        principal.setBounds(0, 0, 362, 640); // Establecer el tamaño del marco
+        principal.getContentPane().setBackground(new Color(252, 254, 190));
         principal.setResizable(false); // Deshabilitar la capacidad de cambiar el tamaño del marco
         principal.setLocationRelativeTo(null); // Centrar el marco en la pantalla
         principal.setVisible(true); // Hacer visible el marco
