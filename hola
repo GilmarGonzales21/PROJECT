@@ -18,9 +18,24 @@ label2.setFont(new Font("Andale Mono", 1, 12));
 label2.setForeground(new Color(255, 255, 255));
 add(label2);
 
-boton1 = JButton();;
-boton1 circularButton = new Jbutton
+boton1 circularButton = new JButton();
+circularButton.setPreferredSize(new Dimension(100, 100));
+boton1.setBackground(new Color(255, 255, 255));
+boton1.addActionListener(this);
+add(boton1);
 
+}
+public void actionPerformed(ActionEvent n){
+if(n.getSource() == boton1){
+ System.exit(0);
+}
+
+public static void main(String args[]{
+pantallaPrincipal principal = new pantallaPrincipal();
+principal.setBounds(0, 0, 360, 640);
+principal.setResizable(false);
+principal.setRelativeLocation(true);
+principal.setVisible(true);
 
 }
 }
