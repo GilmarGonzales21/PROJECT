@@ -4,11 +4,23 @@ public class pantallaPrincipal extends JFrame implements ActionListener{
 private JLabel label1, label2;
 private JButton boton1;
 public pantallaPrincipal(){
+
 setLayout(null);
 label1 = new JLabel("Hogar");
-label1.setBounds();
-label1.setFont();
-label1.setForeground();
+label1.setBounds(35, 135, 300, 30);
+label1.setFont(new Font("", 2, 18));
+label1.setForeground(new Color(255, 0, 0));
 add(label1);
+
+label2 = new JLabel("@2024 USIL");
+label2.setBounds(85, 375, 300, 30);
+label2.setFont(new Font("Andale Mono", 1, 12));
+label2.setForeground(new Color(255, 255, 255));
+add(label2);
+
+boton1 = JButton();;
+boton1 circularButton = new Jbutton
+
+
 }
 }
