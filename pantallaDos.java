@@ -1,27 +1,14 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-
-public class pantallaDos extends JFrame implements ActionListener {
+public class MenuExample extends JFrame implements ActionListener {
 
     private JPanel menuPanel;
-    private boolean menuVisible = true; // Inicialmente visible
+    private boolean menuVisible = false;
 
-    public pantallaDos() {
+    public MenuExample() {
         setTitle("Menú");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(362, 640); // Tamaño de la ventana
@@ -38,26 +25,19 @@ public class pantallaDos extends JFrame implements ActionListener {
         JButton menuButton = new JButton("≡");
         menuButton.setBounds(10,10,50,30); // Ajustar el tamaño del botón
         menuButton.addActionListener(this);
-        panel.add(menuButton, BorderLayout.NORTH);
+        panel.add(menuButton);
 
         // Crear el título del menú
         JLabel menuTitle = new JLabel("MENÚ");
         menuTitle.setFont(new Font("Arial", Font.BOLD, 24));
         menuTitle.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(menuTitle, BorderLayout.CENTER);
+        panel.add(menuTitle, BorderLayout.NORTH);
 
         // Crear el panel para los elementos del menú y centrarlo verticalmente
         menuPanel = new JPanel();
         menuPanel.setBackground(new Color(242, 228, 217));
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Crear los elementos del menú
-        String[] menuItems = {"¿QUIÉNES SOMOS?", "LOGIN", "ORGANIZACION", "CONTACTOS", "VOLUNTARIADOS"};
-        for (String item : menuItems) {
-            menuPanel.add(createMenuItem(item));
-            menuPanel.add(createSeparator());
-        }
 
         panel.add(menuPanel, BorderLayout.CENTER);
 
@@ -126,6 +106,18 @@ public class pantallaDos extends JFrame implements ActionListener {
         if (e.getActionCommand().equals("≡")) {
             // Mostrar u ocultar el menú
             if (!menuVisible) {
+                // Limpiar el panel antes de agregar los elementos del menú
+                menuPanel.removeAll();
+                // Crear los elementos del menú
+                String[] menuItems = {"¿QUIÉNES SOMOS?", "LOGIN", "ORGANIZACION", "CONTACTOS", "VOLUNTARIADOS"};
+                for (String item : menuItems) {
+                    menuPanel.add(createMenuItem(item));
+                    menuPanel.add(createSeparator());
+                }
+                // Actualizar el panel
+                menuPanel.revalidate();
+                menuPanel.repaint();
+            } else {
                 // Limpiar el panel si el menú está oculto
                 menuPanel.removeAll();
                 menuPanel.revalidate();
@@ -136,10 +128,8 @@ public class pantallaDos extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new pantallaDos();
-            }
-        });
+        new MenuExample();
     }
 }
+
+
