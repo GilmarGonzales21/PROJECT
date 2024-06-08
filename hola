@@ -1,3 +1,5 @@
 import.javax.swing.*;
 import java.awt.event.*;
-public class 
+public class pantallaPrincipal extends JFrame implements ActionListener{
+
+}
