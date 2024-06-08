@@ -1,14 +1,26 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuExample extends JFrame implements ActionListener {
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+
+public class pantallaDos extends JFrame implements ActionListener {
 
     private JPanel menuPanel;
     private boolean menuVisible = false;
 
-    public MenuExample() {
+    public pantallaDos() {
         setTitle("Menú");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(362, 640); // Tamaño de la ventana
@@ -128,8 +140,6 @@ public class MenuExample extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new MenuExample();
+        new pantallaDos();
     }
 }
-
-
