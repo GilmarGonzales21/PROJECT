@@ -12,9 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-// Clase principal que extiende JFrame
 public class pantallaUno extends JFrame implements ActionListener {
-    private JLabel label1, label2; // Etiquetas de texto
+    private JLabel label1; // Etiquetas de texto
     private JScrollPane scrollPane; // Área de scroll para las noticias
     private JButton menuButton; // Botón de tres rayitas
 
@@ -33,7 +32,7 @@ public class pantallaUno extends JFrame implements ActionListener {
         label1 = new JLabel("HOGAR");
         label1.setBounds(25, 60, 300, 80);
         label1.setFont(new Font("Playground", Font.BOLD, 89));
-        label1.setForeground(new Color(177, 60, 37));
+        label1.setForeground(new Color(222, 42, 42));
         add(label1);
 
         // Crear el panel que contendrá las noticias
@@ -81,8 +80,16 @@ public class pantallaUno extends JFrame implements ActionListener {
     // Método actionPerformed para manejar eventos de botón
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == menuButton) {
-            // Manejar el evento del botón de tres rayitas aquí
-            System.out.println("Botón de tres rayitas presionado");
+            // Crear una instancia de la pantallaDos
+            pantallaDos frame = new pantallaDos();
+            frame.setBounds(0, 0, 362, 640); // Establecer el tamaño del marco
+            frame.getContentPane().setBackground(new Color(242, 228, 217));
+            frame.setResizable(false); // Deshabilitar la capacidad de cambiar el tamaño del marco
+            frame.setLocationRelativeTo(null); // Centrar el marco en la pantalla
+            frame.setVisible(true); // Mostrar la segunda pantalla
+
+            // Ocultar la instancia actual de pantallaUno
+            setVisible(false);
         }
     }
 
