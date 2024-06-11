@@ -59,9 +59,9 @@ public class registro extends JFrame implements ActionListener {
 
         // Configuración del título
         labelTitulo = new JLabel("REGISTRO");
-        labelTitulo.setBounds(105, 20, 300, 55);
+        labelTitulo.setBounds(75, 20, 300, 55);
         labelTitulo.setFont(new Font("Playground", 1, 40));
-        labelTitulo.setForeground(new Color(222, 42, 42));
+        labelTitulo.setForeground(new Color(62, 89, 175));
         add(labelTitulo);
 
         // Campo de entrada para el nombre de usuario
@@ -152,7 +152,7 @@ public class registro extends JFrame implements ActionListener {
         button1.setFont(new Font("Times Sans Serif", 3 , 16));
         button1.setForeground(new Color(255, 255, 255));
         button1.setBounds(35, 395, 133, 40);
-        button1.setBackground(new Color(220, 42, 42));
+        button1.setBackground(new Color(62, 89, 175));
         button1.addActionListener(this);
         add(button1);
 
@@ -160,7 +160,7 @@ public class registro extends JFrame implements ActionListener {
         button2.setFont(new Font("Times Sans Serif", 3 , 16));
         button2.setForeground(new Color(255, 255, 255));
         button2.setBounds(182, 395, 133, 40);
-        button2.setBackground(new Color(220, 42, 42));
+        button2.setBackground(new Color(62, 89, 175));
         button2.addActionListener(this);
         add(button2);
     }
@@ -205,6 +205,7 @@ public class registro extends JFrame implements ActionListener {
     public static void main(String args[]) {
         registro registro = new registro();
         registro.setBounds(0, 0, 362, 640);
+        registro.getContentPane().setBackground(new Color(209, 243, 219));
         registro.setResizable(false);
         registro.setLocationRelativeTo(null);
         registro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
