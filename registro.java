@@ -51,93 +51,123 @@ public class registro extends JFrame implements ActionListener {
     private JPasswordField passwordField;
     private JSpinner edadSpinner;
     private JComboBox<String> generoComboBox;
-    private JButton submitButton;
+    private JButton button1, button2;
 
     // Constructor de la interfaz
     public registro() {
         setLayout(null);
 
         // Configuración del título
-        labelTitulo = new JLabel("Registro");
-        labelTitulo.setBounds(60, 20, 300, 40);
-        labelTitulo.setFont(new Font("Playground", 3, 35));
+        labelTitulo = new JLabel("REGISTRO");
+        labelTitulo.setBounds(105, 20, 300, 55);
+        labelTitulo.setFont(new Font("Playground", 1, 40));
         labelTitulo.setForeground(new Color(222, 42, 42));
         add(labelTitulo);
 
         // Campo de entrada para el nombre de usuario
         JLabel usernameLabel = new JLabel("Username:");
-        usernameLabel.setBounds(25, 80, 100, 30);
+        usernameLabel.setBounds(35, 85, 100, 20);
+        usernameLabel.setFont(new Font("Times Sans Serif", 1, 14));
+        usernameLabel.setBackground(new Color(224, 224, 224));
         add(usernameLabel);
 
         usernameField = new JTextField();
-        usernameField.setBounds(130, 80, 200, 30);
+        usernameField.setBounds(125, 85, 190, 28);
+        usernameField.setBackground(new Color(224, 224, 224));
         add(usernameField);
 
         // Campo de entrada para la contraseña
         JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setBounds(25, 120, 100, 30);
+        passwordLabel.setBounds(35, 130, 100, 20);
+        passwordLabel.setFont(new Font("Times Sans Serif", 1, 14));
         add(passwordLabel);
 
         passwordField = new JPasswordField();
-        passwordField.setBounds(130, 120, 200, 30);
+        passwordField.setBounds(125, 130, 190, 28);
+        passwordField.setFont(new Font("Times Sans Serif", 1, 18));
+        passwordField.setBackground(new Color(224, 224, 224));
         add(passwordField);
 
         // Campo de entrada para el nombre
         JLabel nombreLabel = new JLabel("Nombre:");
-        nombreLabel.setBounds(25, 160, 100, 30);
+        nombreLabel.setBounds(35, 170, 100, 20);
+        nombreLabel.setFont(new Font("Times Sans Serif", 1 , 14));
         add(nombreLabel);
 
         nombreField = new JTextField();
-        nombreField.setBounds(130, 160, 200, 30);
+        nombreField.setBounds(125, 170, 190, 28);
+        nombreField.setFont(new Font("Times Sans Serif", 1, 18));
+        nombreField.setBackground(new Color(224, 224, 224));
         add(nombreField);
 
         // Campo de entrada para el apellido
         JLabel apellidoLabel = new JLabel("Apellido:");
-        apellidoLabel.setBounds(25, 200, 100, 30);
+        apellidoLabel.setBounds(35, 210, 100, 20);
+        apellidoLabel.setFont(new Font("Times Sans Serif", 1 , 14));
         add(apellidoLabel);
         
         apellidoField = new JTextField();
-        apellidoField.setBounds(130, 200, 200, 30);
+        apellidoField.setBounds(125, 210, 190, 28);
+        apellidoField.setFont(new Font("Times Sans Serif", 1, 18));
+        apellidoField.setBackground(new Color(224, 224, 224));
         add(apellidoField);
 
         // Campo de entrada para el correo
         JLabel correoLabel = new JLabel("Correo:");
-        correoLabel.setBounds(25, 240, 100, 30);
+        correoLabel.setBounds(35, 250, 100, 20);
+        correoLabel.setFont(new Font("Times Sans Serif", 1 , 14));
         add(correoLabel);
 
         correoField = new JTextField();
-        correoField.setBounds(130, 240, 200, 30);
+        correoField.setBounds(125, 250, 190, 28);
+        correoField.setFont(new Font("Times Sans Serif", 1, 10));
+        correoField.setBackground(new Color(224, 224, 224));
         add(correoField);
 
         // Campo de entrada para la edad
         JLabel edadLabel = new JLabel("Edad:");
-        edadLabel.setBounds(25, 280, 100, 30);
+        edadLabel.setBounds(35, 290, 100, 30);
+        nombreLabel.setFont(new Font("Times Sans Serif", 1 , 15));
         add(edadLabel);
 
         edadSpinner = new JSpinner(new SpinnerNumberModel(18, 0, 100, 1));
-        edadSpinner.setBounds(130, 280, 50, 30);
+        edadSpinner.setBounds(125, 290, 55, 33);
+        edadSpinner.setBackground(new Color(224, 224, 224));
         add(edadSpinner);
 
         // Campo de entrada para el género
         JLabel generoLabel = new JLabel("Género:");
-        generoLabel.setBounds(25, 320, 100, 30);
+        generoLabel.setBounds(35, 338, 190, 30);
+        generoLabel.setFont(new Font("Times Sans Serif", 1 , 14));
         add(generoLabel);
         
         String[] generos = {"Masculino", "Femenino", "Otro"};
         generoComboBox = new JComboBox<>(generos);
-        generoComboBox.setBounds(130, 320, 200, 30);
+        generoComboBox.setBounds(125, 338, 190, 30);
+        generoComboBox.setBackground(new Color(224, 224, 224));
         add(generoComboBox);
 
         // Botón para enviar el registro
-        submitButton = new JButton("Registrarse");
-        submitButton.setBounds(130, 360, 200, 30);
-        submitButton.addActionListener(this);
-        add(submitButton);
+        button1 = new JButton("Regresar");
+        button1.setFont(new Font("Times Sans Serif", 3 , 16));
+        button1.setForeground(new Color(255, 255, 255));
+        button1.setBounds(35, 395, 133, 40);
+        button1.setBackground(new Color(220, 42, 42));
+        button1.addActionListener(this);
+        add(button1);
+
+        button2 = new JButton("Registrarse");
+        button2.setFont(new Font("Times Sans Serif", 3 , 16));
+        button2.setForeground(new Color(255, 255, 255));
+        button2.setBounds(182, 395, 133, 40);
+        button2.setBackground(new Color(220, 42, 42));
+        button2.addActionListener(this);
+        add(button2);
     }
 
     // Método para manejar el evento de clic en el botón de registro
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == submitButton) {
+        if (e.getSource() == button1) {
             // Obtener los valores de los campos de entrada
             String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
@@ -175,7 +205,6 @@ public class registro extends JFrame implements ActionListener {
     public static void main(String args[]) {
         registro registro = new registro();
         registro.setBounds(0, 0, 362, 640);
-        registro.getContentPane().setBackground(new Color(252, 254, 190));
         registro.setResizable(false);
         registro.setLocationRelativeTo(null);
         registro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
