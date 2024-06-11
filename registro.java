@@ -26,14 +26,16 @@ public class registro extends JFrame implements ActionListener {
 
         // Crear y configurar la etiqueta de título
         labelTitulo = new JLabel("Registro");
-        labelTitulo.setBounds(60, 20, 300, 80);
-        labelTitulo.setFont(new Font("Playground", Font.BOLD, 50));
+        labelTitulo.setBounds(60, 20, 300, 40);
+        labelTitulo.setFont(new Font("Playground", 3, 35));
         labelTitulo.setForeground(new Color(222, 42, 42));
         add(labelTitulo);
 
         // Crear y configurar la etiqueta y campo de texto para el nombre
         JLabel nombreLabel = new JLabel("Nombre:");
         nombreLabel.setBounds(25, 120, 100, 30);
+        nombreLabel.setFont(new Font("Darling Coffee", 2, 18));
+        nombreLabel.setForeground(new Color(222, 42, 42));
         add(nombreLabel);
 
         nombreField = new JTextField();
