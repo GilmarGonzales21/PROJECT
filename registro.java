@@ -56,6 +56,7 @@ public class registro extends JFrame implements ActionListener {
     // Constructor de la interfaz
     public registro() {
         setLayout(null);
+        setTitle("Registro");
 
         // Configuración del título
         labelTitulo = new JLabel("REGISTRO");
