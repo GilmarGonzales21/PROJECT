@@ -1,15 +1,26 @@
 public class pantallaTres extends JFrame implements ActionListener{
-  import javax.swing.*;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 
-public class ContactosApp extends JFrame {
+public class ContactosApp extends JFrame implements ActionListener {
 
     public ContactosApp() {
         setTitle("Contactos");
         setSize(362, 640);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                ImageIcon icon = new ImageIcon("C:\\Users\\ROGER\\Music\\instagram.jpg");
+                g.drawImage(icon.getImage(), 0, 0, null);
+            }
+        };
 
         // Panel principal
         JPanel mainPanel = new JPanel();
@@ -20,8 +31,10 @@ public class ContactosApp extends JFrame {
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         menuPanel.setBackground(new Color(245, 235, 215));
-        JLabel menuLabel = new JLabel("≡");
-        menuPanel.add(menuLabel);
+        JButton menuButton = new JButton("≡");
+        menuButton.setPreferredSize(new Dimension(50, 30)); // Ajustar tamaño del botón
+        menuButton.addActionListener(this);
+        menuPanel.add(menuButton);
 
         // Título
         JLabel titleLabel = new JLabel("CONTACTOS");
@@ -30,20 +43,20 @@ public class ContactosApp extends JFrame {
 
         // Número de contacto
         JPanel numberPanel = new JPanel();
-        numberPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        numberPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         numberPanel.setBackground(new Color(245, 235, 215));
-        JLabel numberLabel = new JLabel("NÚMERO: XXX. XXX. XXX");
-        numberLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        JLabel numberLabel = new JLabel("NÚMERO: 984 577 322");
+        numberLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         JButton callButton = createCircularButton("📞", new Color(245, 235, 215));
         numberPanel.add(numberLabel);
         numberPanel.add(callButton);
 
         // Redes sociales
         JPanel redesPanel = new JPanel();
-        redesPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        redesPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         redesPanel.setBackground(new Color(245, 235, 215));
         JLabel redesLabel = new JLabel("REDES:");
-        redesLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        redesLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         redesPanel.add(redesLabel);
 
         JButton facebookButton = createCircularButton("F", new Color(245, 235, 215));
@@ -55,10 +68,10 @@ public class ContactosApp extends JFrame {
 
         // Correos
         JPanel correosPanel = new JPanel();
-        correosPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        correosPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         correosPanel.setBackground(new Color(245, 235, 215));
         JLabel correosLabel = new JLabel("CORREOS:");
-        correosLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        correosLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         correosPanel.add(correosLabel);
 
         JLabel emailLabel1 = new JLabel("hogar20@GMAIL.COM");
@@ -103,16 +116,12 @@ public class ContactosApp extends JFrame {
 
             @Override
             protected void paintBorder(Graphics g) {
-                g.setColor(getForeground());
-                g.drawOval(0, 0, getWidth() - 1, getHeight() - 1);
+                // No pintamos el borde
             }
 
             @Override
             public Dimension getPreferredSize() {
-                Dimension size = super.getPreferredSize();
-                int diameter = Math.max(size.width, size.height);
-                size.setSize(diameter, diameter);
-                return size;
+                return new Dimension(50, 50); // Tamaño circular
             }
 
             @Override
@@ -128,12 +137,21 @@ public class ContactosApp extends JFrame {
         return button;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            ContactosApp app = new ContactosApp();
-            app.setVisible(true);
-        });
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Acciones del botón de menú
     }
+
+    public static void main(String[] args) {
+    SwingUtilities.invokeLater(() -> {
+        ContactosApp app = new ContactosApp();
+        app.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+        app.setVisible(true);
+    });
+}
 }
 
+
 }
+
+
