@@ -19,6 +19,7 @@ public class pantallaPrincipal extends JFrame implements ActionListener {
     public pantallaPrincipal() {
         // Establecer el diseño nulo
         setLayout(null);
+        setTitle("Hogar");
 
         // Crear y configurar la primera etiqueta de texto
         label1 = new JLabel("HOGAR");
