@@ -1,11 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,23 +41,34 @@ public class pantallaDos extends JFrame implements ActionListener {
         menuButton.setForeground(new Color(255, 255, 255));
         menuButton.setBackground(new Color(62, 89, 175)); 
         menuButton.addActionListener(this);
-        panel.add(menuButton);
+        panel.add(menuButton, BorderLayout.NORTH);
 
-        // Crear el título del menú
+        // Crear un panel para el título del menú y centrarlo
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.setBackground(new Color(209, 243, 219));
         JLabel menuTitle = new JLabel("MENÚ");
-        menuTitle.setBounds(85, 20, 300, 55);
         menuTitle.setFont(new Font("Playground", 1, 65));
         menuTitle.setForeground(new Color(62, 89, 175));
-        panel.add(menuTitle);
+        titlePanel.add(menuTitle);
+        panel.add(titlePanel, BorderLayout.NORTH);
 
         // Crear el panel para los elementos del menú y centrarlo verticalmente
+        JPanel centerPanel = new JPanel();
+        centerPanel.setBackground(new Color(209, 243, 219));
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        centerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         menuPanel = new JPanel();
-        menuPanel.setBackground(new Color(242, 228, 217));
-        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setBackground(new Color(209, 243, 219));
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        panel.add(menuPanel, BorderLayout.CENTER);
+        // Añadir espacios para centrar el menú verticalmente
+        centerPanel.add(Box.createVerticalGlue());
+        centerPanel.add(menuPanel);
+        centerPanel.add(Box.createVerticalGlue());
+
+        panel.add(centerPanel, BorderLayout.CENTER);
 
         // Agregar el panel principal al marco
         add(panel);
@@ -87,6 +100,10 @@ public class pantallaDos extends JFrame implements ActionListener {
                     case "LOGIN":
                         // Acción para LOGIN
                         JOptionPane.showMessageDialog(null, "Navegar a LOGIN");
+                        break;
+                    case "REGISTER":
+                        // Acción para REGISTER
+                        JOptionPane.showMessageDialog(null, "Navegar a REGISTER");
                         break;
                     case "ORGANIZACION":
                         // Acción para ORGANIZACION
@@ -123,7 +140,7 @@ public class pantallaDos extends JFrame implements ActionListener {
                 // Limpiar el panel antes de agregar los elementos del menú
                 menuPanel.removeAll();
                 // Crear los elementos del menú
-                String[] menuItems = {"¿QUIÉNES SOMOS?", "LOGIN", "ORGANIZACION", "CONTACTOS", "VOLUNTARIADOS"};
+                String[] menuItems = {"¿QUIÉNES SOMOS?", "LOGIN", "REGISTER", "ORGANIZACION", "CONTACTOS", "VOLUNTARIADOS"};
                 for (String item : menuItems) {
                     menuPanel.add(createMenuItem(item));
                     menuPanel.add(createSeparator());
