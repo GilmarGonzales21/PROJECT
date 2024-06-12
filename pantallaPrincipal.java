@@ -24,14 +24,14 @@ public class pantallaPrincipal extends JFrame implements ActionListener {
         label1 = new JLabel("HOGAR");
         label1.setBounds(25, 60, 300, 80);
         label1.setFont(new Font("Playground", 1, 89));
-        label1.setForeground(new Color(177, 60, 37));
+        label1.setForeground(new Color(62, 89, 175));
         add(label1);
 
         // Crear y configurar la segunda etiqueta de texto
         label2 = new JLabel("@2024 USIL");
         label2.setBounds(140, 410, 300, 300);
         label2.setFont(new Font("Andale Mono", 3, 12));
-        label2.setForeground(new Color(177, 60, 37));
+        label2.setForeground(new Color(62, 89, 175));
         add(label2);
 
         // Crear el botón personalizado, establecer su posición y tamaño, y agregarlo al panel
@@ -54,7 +54,7 @@ public class pantallaPrincipal extends JFrame implements ActionListener {
     public static void main(String args[]) {
         pantallaPrincipal principal = new pantallaPrincipal(); // Crear una instancia de la clase pantallaPrincipal
         principal.setBounds(0, 0, 362, 640); // Establecer el tamaño del marco
-        principal.getContentPane().setBackground(new Color(252, 254, 190));
+        principal.getContentPane().setBackground(new Color(209, 243, 219));
         principal.setResizable(false); // Deshabilitar la capacidad de cambiar el tamaño del marco
         principal.setLocationRelativeTo(null); // Centrar el marco en la pantalla
         principal.setVisible(true); // Hacer visible el marco
