@@ -27,7 +27,7 @@ public class pantallaDos extends JFrame implements ActionListener {
 
         // Crear el contenedor principal con BorderLayout
         JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(242, 228, 217));
+        panel.setBackground(new Color(209, 243, 219));
         panel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(124, 58, 237), 2),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10) // Añadir margen interior
@@ -35,20 +35,24 @@ public class pantallaDos extends JFrame implements ActionListener {
 
         // Crear el botón de menú
         JButton menuButton = new JButton("≡");
-        menuButton.setBounds(10,10,50,30); // Ajustar el tamaño del botón
+        menuButton.setBounds(16,16,50,30);
+        menuButton.setForeground(new Color(255, 255, 255));
+        menuButton.setBackground(new Color(62, 89, 175)); 
         menuButton.addActionListener(this);
         panel.add(menuButton);
 
         // Crear el título del menú
         JLabel menuTitle = new JLabel("MENÚ");
-        menuTitle.setFont(new Font("Arial", Font.BOLD, 24));
-        menuTitle.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(menuTitle, BorderLayout.NORTH);
+        menuTitle.setBounds(85, 20, 300, 55);
+        menuTitle.setFont(new Font("Playground", 1, 65));
+        menuTitle.setForeground(new Color(62, 89, 175));
+        panel.add(menuTitle);
 
         // Crear el panel para los elementos del menú y centrarlo verticalmente
         menuPanel = new JPanel();
         menuPanel.setBackground(new Color(242, 228, 217));
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        menuPanel.setBackground(new Color(209, 243, 219));
         menuPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         panel.add(menuPanel, BorderLayout.CENTER);
@@ -60,14 +64,12 @@ public class pantallaDos extends JFrame implements ActionListener {
 
     private JPanel createMenuItem(String text) {
         JPanel menuItemPanel = new JPanel();
-        menuItemPanel.setBackground(new Color(242, 228, 217));
         menuItemPanel.setLayout(new BoxLayout(menuItemPanel, BoxLayout.Y_AXIS));
         menuItemPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centrar el elemento del menú
 
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.BOLD, 18));
+        button.setFont(new Font("Times Sans Serif", 3 , 16));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setBackground(new Color(242, 228, 217));
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.setOpaque(false);
@@ -140,6 +142,12 @@ public class pantallaDos extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new pantallaDos();
+        pantallaDos pantalla = new pantallaDos();
+        pantalla.setBounds(0, 0, 362, 640);
+        pantalla.getContentPane().setBackground(new Color(209, 243, 219));
+        pantalla.setResizable(false);
+        pantalla.setLocationRelativeTo(null);
+        pantalla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pantalla.setVisible(true);
     }
 }
