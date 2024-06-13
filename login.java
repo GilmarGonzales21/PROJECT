@@ -2,6 +2,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,24 +19,19 @@ public class login extends JFrame implements ActionListener {
     private JPasswordField passwordField;
     private JButton loginButton;
 
-    // Array para almacenar los registros de usuarios y contraseñas
-    private RegistroDatos[] registros;
-    private int numRegistros;
-
-    public login(RegistroDatos[] registros, int numRegistros) {
-        this.registros = registros;
-        this.numRegistros = numRegistros;
-
+    // Constructor
+    public login() {
         setLayout(null);
 
         labelTitulo = new JLabel("Inicio de Sesión");
-        labelTitulo.setBounds(60, 20, 300, 40);
-        labelTitulo.setFont(new Font("Playground", 3, 25));
-        labelTitulo.setForeground(new Color(222, 42, 42));
+        labelTitulo.setBounds(50, 20, 300, 40);
+        labelTitulo.setFont(new Font("Playground", 1, 30));
+        labelTitulo.setForeground(new Color(62, 89, 175));
         add(labelTitulo);
 
         userLabel = new JLabel("Username:");
         userLabel.setBounds(25, 80, 100, 30);
+        userLabel.setFont(new Font("Times Sans Serif", 1, 14));
         add(userLabel);
 
         usernameField = new JTextField();
@@ -42,6 +40,7 @@ public class login extends JFrame implements ActionListener {
 
         passLabel = new JLabel("Password:");
         passLabel.setBounds(25, 120, 100, 30);
+        passLabel.setFont(new Font("Times Sans Serif", 1, 14));
         add(passLabel);
 
         passwordField = new JPasswordField();
@@ -68,26 +67,24 @@ public class login extends JFrame implements ActionListener {
     }
 
     private boolean verificarCredenciales(String username, String password) {
-        for (int i = 0; i < numRegistros; i++) {
-            if (registros[i].username.equals(username) && registros[i].password.equals(password)) {
-                return true;
+        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\gilma\\Desktop\\PROJECT\\registros.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(": ");
+                if (parts.length == 2 && parts[0].equals(username) && parts[1].equals(password)) {
+                    return true;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }
 
     public static void main(String args[]) {
-        // Ejemplo de uso con registros precargados
-        RegistroDatos[] registros = {
-            new RegistroDatos("usuario1", "contrasena1", "Nombre1", "Apellido1", "correo1@example.com", 25, "Masculino"),
-            new RegistroDatos("usuario2", "contrasena2", "Nombre2", "Apellido2", "correo2@example.com", 30, "Femenino"),
-            // Agregar más registros si es necesario
-        };
-        int numRegistros = registros.length;
-
-        login login = new login(registros, numRegistros);
+        login login = new login();
         login.setBounds(0, 0, 362, 240);
-        login.getContentPane().setBackground(new Color(252, 254, 190));
+        login.getContentPane().setBackground(new Color(209, 243, 219));
         login.setResizable(false);
         login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
