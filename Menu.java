@@ -17,18 +17,27 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-public class pantallaDos extends JFrame implements ActionListener {
-
+public class Menu extends JFrame implements ActionListener {
+    
+    // Declaración de variables
     private JPanel menuPanel;
     private boolean menuVisible = false;
+    private JButton menuButton;
+    private JPanel panel;
+    private JLabel menuTitle;
+    private JPanel titlePanel;
+    private JPanel centerPanel;
+    private JSeparator separator;
+    private JButton button;
+    private JPanel menuItemPanel;
 
-    public pantallaDos() {
+    public Menu() {
         setTitle("Menú");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(362, 640); // Tamaño de la ventana
 
         // Crear el contenedor principal con BorderLayout
-        JPanel panel = new JPanel(new BorderLayout());
+        panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(209, 243, 219));
         panel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(124, 58, 237), 2),
@@ -36,7 +45,7 @@ public class pantallaDos extends JFrame implements ActionListener {
         ));
 
         // Crear el botón de menú
-        JButton menuButton = new JButton("≡");
+        menuButton = new JButton("≡");
         menuButton.setBounds(16,16,50,30);
         menuButton.setForeground(new Color(255, 255, 255));
         menuButton.setBackground(new Color(62, 89, 175)); 
@@ -44,16 +53,16 @@ public class pantallaDos extends JFrame implements ActionListener {
         panel.add(menuButton, BorderLayout.NORTH);
 
         // Crear un panel para el título del menú y centrarlo
-        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         titlePanel.setBackground(new Color(209, 243, 219));
-        JLabel menuTitle = new JLabel("MENÚ");
+        menuTitle = new JLabel("MENÚ");
         menuTitle.setFont(new Font("Playground", 1, 65));
         menuTitle.setForeground(new Color(62, 89, 175));
         titlePanel.add(menuTitle);
         panel.add(titlePanel, BorderLayout.NORTH);
 
         // Crear el panel para los elementos del menú y centrarlo verticalmente
-        JPanel centerPanel = new JPanel();
+        centerPanel = new JPanel();
         centerPanel.setBackground(new Color(209, 243, 219));
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
         centerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -76,11 +85,11 @@ public class pantallaDos extends JFrame implements ActionListener {
     }
 
     private JPanel createMenuItem(String text) {
-        JPanel menuItemPanel = new JPanel();
+        menuItemPanel = new JPanel();
         menuItemPanel.setLayout(new BoxLayout(menuItemPanel, BoxLayout.Y_AXIS));
         menuItemPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centrar el elemento del menú
 
-        JButton button = new JButton(text);
+        button = new JButton(text);
         button.setFont(new Font("Times Sans Serif", 3 , 16));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setBorderPainted(false);
@@ -99,20 +108,26 @@ public class pantallaDos extends JFrame implements ActionListener {
                         break;
                     case "LOGIN":
                         // Acción para LOGIN
-                        JOptionPane.showMessageDialog(null, "Navegar a LOGIN");
+                        login loginScreen = new login();
+                        loginScreen.setVisible(true);
+                        loginScreen.setBounds(0 , 0, 362, 640);
+                        dispose(); // Cierra la ventana del menú
                         break;
                     case "REGISTER":
                         // Acción para REGISTER
-                        JOptionPane.showMessageDialog(null, "Navegar a REGISTER");
+                        registro registroScreem = new registro();
+                        registroScreem.setVisible(true);
+                        registroScreem.setBounds(0, 0, 362, 640);
+                        dispose(); // Cierra la ventana del menú
                         break;
                     case "ORGANIZACION":
                         // Acción para ORGANIZACION
                         JOptionPane.showMessageDialog(null, "Navegar a ORGANIZACION");
                         break;
                     case "CONTACTOS":
-                        // Acción para CONTACTOS
-                        JOptionPane.showMessageDialog(null, "Navegar a CONTACTOS");
-                        break;
+                    ContactosApp contactosScreem = new ContactosApp();
+                    contactosScreem.setVisible(true);
+                    dispose(); // cierra la ventana del menú
                     case "VOLUNTARIADOS":
                         // Acción para VOLUNTARIADOS
                         JOptionPane.showMessageDialog(null, "Navegar a VOLUNTARIADOS");
@@ -127,7 +142,7 @@ public class pantallaDos extends JFrame implements ActionListener {
     }
 
     private JSeparator createSeparator() {
-        JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
+        separator = new JSeparator(SwingConstants.HORIZONTAL);
         separator.setForeground(Color.BLACK);
         return separator;
     }
@@ -159,7 +174,7 @@ public class pantallaDos extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        pantallaDos pantalla = new pantallaDos();
+        Menu pantalla = new Menu();
         pantalla.setBounds(0, 0, 362, 640);
         pantalla.getContentPane().setBackground(new Color(209, 243, 219));
         pantalla.setResizable(false);
