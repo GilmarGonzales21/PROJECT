@@ -11,12 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 // Clase principal que extiende JFrame y implementa ActionListener para manejar eventos de botón
-public class pantallaPrincipal extends JFrame implements ActionListener {
+public class pantallaInicio extends JFrame implements ActionListener {
     private JLabel label1, label2; // Etiquetas de texto
     private CircularButton boton1; // Botón personalizado
 
     // Constructor de la clase
-    public pantallaPrincipal() {
+    public pantallaInicio() {
         // Establecer el diseño nulo
         setLayout(null);
         setTitle("Hogar");
@@ -36,7 +36,7 @@ public class pantallaPrincipal extends JFrame implements ActionListener {
         add(label2);
 
         // Crear el botón personalizado, establecer su posición y tamaño, y agregarlo al panel
-        boton1 = new CircularButton(new ImageIcon("gaseosa.png"));
+        boton1 = new CircularButton(new ImageIcon("image.png"));
         boton1.setBounds(30, 170, 300, 300); // Centrar el botón en el panel con un tamaño de 300x300
         boton1.setBackground(new Color(255, 255, 255)); // Establecer el color de fondo del botón
         boton1.addActionListener(this); // Agregar un ActionListener al botón
@@ -47,13 +47,17 @@ public class pantallaPrincipal extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent n) {
         // Si el evento proviene del botón1, salir del programa
         if (n.getSource() == boton1) {
-            System.exit(0);
+            pantallaUno pantallaUnoScream = new pantallaUno();
+            pantallaUnoScream.setVisible(true);
+            pantallaUnoScream.setBounds(0 , 0, 362, 640);
+                        dispose(); // Cierra la ventana del menú
+                        
         }
     }
 
     // Método principal para iniciar la aplicación
     public static void main(String args[]) {
-        pantallaPrincipal principal = new pantallaPrincipal(); // Crear una instancia de la clase pantallaPrincipal
+        pantallaInicio principal = new pantallaInicio(); // Crear una instancia de la clase pantallaPrincipal
         principal.setBounds(0, 0, 362, 640); // Establecer el tamaño del marco
         principal.getContentPane().setBackground(new Color(209, 243, 219));
         principal.setResizable(false); // Deshabilitar la capacidad de cambiar el tamaño del marco
