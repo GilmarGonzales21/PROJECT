@@ -1,157 +1,87 @@
-public class pantallaTres extends JFrame implements ActionListener{
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Ellipse2D;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 
-public class ContactosApp extends JFrame implements ActionListener {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
-    public ContactosApp() {
-        setTitle("Contactos");
-        setSize(362, 640);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+public class pantallaThree extends JFrame implements ActionListener{
+    private JLabel labContacto, labNumero, labRedes, labCorreos, labCorreo1, labCorreo2;
+    private JButton boton1, boton2, boton3;
 
-        JPanel panel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                ImageIcon icon = new ImageIcon("C:\\Users\\ROGER\\Music\\instagram.jpg");
-                g.drawImage(icon.getImage(), 0, 0, null);
-            }
-        };
+    public pantallaThree(){
+        setLayout(null);
+        setTitle("Informes");
 
-        // Panel principal
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        mainPanel.setBackground(new Color(245, 235, 215));
+        labContacto = new JLabel("CONTACTOS");
+        labContacto.setBounds(75, 20, 300, 55);
+        labContacto.setFont(new Font("Playground", 1, 40));
+        labContacto.setForeground(new Color(62, 89, 175));
+        add(labContacto);
 
-        // Menú de hamburguesa
-        JPanel menuPanel = new JPanel();
-        menuPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        menuPanel.setBackground(new Color(245, 235, 215));
-        JButton menuButton = new JButton("≡");
-        menuButton.setPreferredSize(new Dimension(50, 30)); // Ajustar tamaño del botón
-        menuButton.addActionListener(this);
-        menuPanel.add(menuButton);
+        labNumero = new JLabel("Número:");
+        labNumero.setBounds(35, 105, 100, 20);
+        labNumero.setFont(new Font("Times Sans Serif", 1, 14));
+        add(labNumero);
 
-        // Título
-        JLabel titleLabel = new JLabel("CONTACTOS");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        labNumero = new JLabel("998 992 868");
+        labNumero.setBounds(105, 105, 100, 20);
+        labNumero.setFont(new Font("Times Sans Serif", 1, 14));
+        add(labNumero);
 
-        // Número de contacto
-        JPanel numberPanel = new JPanel();
-        numberPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        numberPanel.setBackground(new Color(245, 235, 215));
-        JLabel numberLabel = new JLabel("NÚMERO: 984 577 322");
-        numberLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-        JButton callButton = createCircularButton("📞", new Color(245, 235, 215));
-        numberPanel.add(numberLabel);
-        numberPanel.add(callButton);
+        labRedes = new JLabel("Redes:");
+        labRedes.setBounds(35, 140, 300, 55);
+        labRedes.setFont(new Font("Times Sans Serif", 1, 14));
+        add(labRedes);
 
-        // Redes sociales
-        JPanel redesPanel = new JPanel();
-        redesPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        redesPanel.setBackground(new Color(245, 235, 215));
-        JLabel redesLabel = new JLabel("REDES:");
-        redesLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-        redesPanel.add(redesLabel);
+        labCorreos = new JLabel("Correos:");
+        labCorreos.setBounds(35, 210, 300, 55);
+        labCorreos.setFont(new Font("Times Sans Serif", 1, 14));
+        add(labCorreos);
+        
+        labCorreo1 = new JLabel("hogar20@gmail.com");
+        labCorreo1.setBounds( 105, 210, 300, 55);
+        labCorreo1.setFont(new Font("Times Sans Serif", 1, 14));
+        add(labCorreo1);
+        
+        labCorreo2 = new JLabel("javiercito1@gmail.com");
+        labCorreo2.setBounds(105, 230, 300, 55);
+        labCorreo2.setFont(new Font("Times Sans Serif", 1, 14));
+        add(labCorreo2);
 
-        JButton facebookButton = createCircularButton("F", new Color(245, 235, 215));
-        JButton instagramButton = createCircularButton("📸", new Color(245, 235, 215));
-        JButton linkButton = createCircularButton("🔗", new Color(245, 235, 215));
-        redesPanel.add(facebookButton);
-        redesPanel.add(instagramButton);
-        redesPanel.add(linkButton);
-
-        // Correos
-        JPanel correosPanel = new JPanel();
-        correosPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        correosPanel.setBackground(new Color(245, 235, 215));
-        JLabel correosLabel = new JLabel("CORREOS:");
-        correosLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-        correosPanel.add(correosLabel);
-
-        JLabel emailLabel1 = new JLabel("hogar20@GMAIL.COM");
-        JLabel emailLabel2 = new JLabel("nayeli2401@GMAIL.COM");
-        correosPanel.add(emailLabel1);
-        correosPanel.add(emailLabel2);
-
-        // Logo
-        JButton logoButton = createCircularButton("Hogar", new Color(245, 235, 215));
-        logoButton.setFont(new Font("Arial", Font.ITALIC, 24));
-        logoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Agregar componentes al panel principal
-        mainPanel.add(menuPanel);
-        mainPanel.add(Box.createVerticalGlue());
-        mainPanel.add(titleLabel);
-        mainPanel.add(Box.createVerticalGlue());
-        mainPanel.add(numberPanel);
-        mainPanel.add(Box.createVerticalGlue());
-        mainPanel.add(redesPanel);
-        mainPanel.add(Box.createVerticalGlue());
-        mainPanel.add(correosPanel);
-        mainPanel.add(Box.createVerticalGlue());
-        mainPanel.add(logoButton);
-        mainPanel.add(Box.createVerticalGlue());
-
-        add(mainPanel, BorderLayout.CENTER);
+        boton1 = new JButton();
+        boton1.setBounds(107, 140, 60, 40);
+        boton1.setBackground(new Color(62, 89, 175));
+        boton1.addActionListener(this);
+        add(boton1);
+ 
+        boton2 = new JButton();
+        boton2.setBounds(190, 140, 60, 40);
+        boton2.setBackground(new Color(62, 89, 175));
+        boton2.addActionListener(this);
+        add(boton2);
+        
+        boton3 = new JButton();
+        boton3.setBounds(45, 490, 140, 40);
+        boton3.setBackground(new Color(62, 89, 175));
+        boton3.addActionListener(this);
+        add(boton3);
     }
 
-    private JButton createCircularButton(String label, Color backgroundColor) {
-        JButton button = new JButton(label) {
-            @Override
-            protected void paintComponent(Graphics g) {
-                if (getModel().isArmed()) {
-                    g.setColor(Color.LIGHT_GRAY);
-                } else {
-                    g.setColor(backgroundColor);
-                }
-                g.fillOval(0, 0, getWidth(), getHeight());
-                super.paintComponent(g);
-            }
-
-            @Override
-            protected void paintBorder(Graphics g) {
-                // No pintamos el borde
-            }
-
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(50, 50); // Tamaño circular
-            }
-
-            @Override
-            public boolean contains(int x, int y) {
-                Ellipse2D shape = new Ellipse2D.Float(0, 0, getWidth(), getHeight());
-                return shape.contains(x, y);
-            }
-        };
-        button.setContentAreaFilled(false);
-        button.setFocusPainted(false);
-        button.setBorderPainted(false);
-        button.setOpaque(false);
-        return button;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // Acciones del botón de menú
+    public void actionPerformed(ActionEvent n){
+    
     }
 
     public static void main(String[] args) {
-    SwingUtilities.invokeLater(() -> {
-        ContactosApp app = new ContactosApp();
-        app.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
-        app.setVisible(true);
-    });
+        pantallaThree pantalla = new pantallaThree();
+        pantalla.setBounds(0, 0, 362, 640);
+        pantalla.getContentPane().setBackground(new Color(209, 243, 219));
+        pantalla.setResizable(false);
+        pantalla.setLocationRelativeTo(null);
+        pantalla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pantalla.setVisible(true);
+    }
 }
-}
-
-
-}
-
-
