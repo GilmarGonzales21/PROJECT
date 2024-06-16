@@ -11,7 +11,7 @@ import javax.swing.JLayeredPane;
 
 // Clase principal que extiende JFrame
 public class GrupoOrg extends JFrame {
-    private JLabel label1, label2; // Etiquetas de texto
+    private JLabel label1, label2, label3, label4, label5, label6; // Etiquetas de texto
     private CircularButton[] botones; // Array de botones personalizados
     private JLayeredPane layeredPane; // Panel en capas para manejar la superposición de botones
 
@@ -23,27 +23,51 @@ public class GrupoOrg extends JFrame {
 
         // Crear y configurar la primera etiqueta de texto
         label1 = new JLabel("ORGANIZACIONES");
-        label1.setBounds(25, 20, 300, 50);
-        label1.setFont(new Font("Arial", Font.BOLD, 25));
+        label1.setBounds(25, 20, 300, 55);
+        label1.setFont(new Font("Playground", 1, 35));
         label1.setForeground(new Color(62, 89, 175));
         add(label1);
 
         // Crear y configurar la segunda etiqueta de texto
         label2 = new JLabel("@2024 USIL");
-        label2.setBounds(140, 570, 300, 30);
-        label2.setFont(new Font("Andale Mono", Font.ITALIC, 12));
+        label2.setBounds(140, 560, 300, 30);
+        label2.setFont(new Font("Andale Mono", 3, 12));
         label2.setForeground(new Color(62, 89, 175));
         add(label2);
 
+        label3 = new JLabel("TECHO Perú");
+        label3.setBounds(42, 280, 300, 25);
+        label3.setFont(new Font("Times Sans Serif", 1 , 17));
+        label3.setForeground(new Color(62, 89, 175));
+        add(label3);
+
+        label4 = new JLabel("CARITAS Perú");
+        label4.setBounds(197, 280, 300, 25);
+        label4.setFont(new Font("Times Sans Serif", 1 , 17));
+        label4.setForeground(new Color(62, 89, 175));
+        add(label4);
+
+        label5 = new JLabel("TECHO, mi país");
+        label5.setBounds(30, 480, 300, 25);
+        label5.setFont(new Font("Times Sans Serif", 1 , 17));
+        label5.setForeground(new Color(62, 89, 175));
+        add(label5);
+
+        label6 = new JLabel("AYLLU Initiative");
+        label6.setBounds(190, 480, 300, 25);
+        label6.setFont(new Font("Times Sans Serif", 1 , 17));
+        label6.setForeground(new Color(62, 89, 175));
+        add(label6);
+
         // Inicializar el JLayeredPane
         layeredPane = new JLayeredPane();
-        layeredPane.setBounds(0, 100, 362, 480); // Reducido la altura para acomodar 3 filas de botones
+        layeredPane.setBounds(0, 100, 400, 400); // Reducido la altura para acomodar 3 filas de botones
         add(layeredPane);
 
         // Crear un array de botones personalizados
         botones = new CircularButton[10];
-        int x = 30, y = 0; // Coordenadas iniciales
-        int buttonSize = 100; // Tamaño de cada botón
+        int x = 30, y = 30; // Coordenadas iniciales
+        int buttonSize = 130; // Tamaño de cada botón
         for (int i = 0; i < 10; i++) {
             botones[i] = new CircularButton(new ImageIcon("image" + (i + 1) + ".jpg"));
             botones[i].setBounds(x, y, buttonSize, buttonSize); // Ajustar la posición y tamaño de los botones
@@ -51,12 +75,12 @@ public class GrupoOrg extends JFrame {
             layeredPane.add(botones[i], Integer.valueOf(i)); // Agregar el botón al panel en capas con índice i
 
             // Actualizar las coordenadas para el siguiente botón
-            x += 120; // Mover a la derecha
+            x += 160; // Mover a la derecha
 
             // Cambiar a la siguiente fila después de cada 3 botones
-            if ((i + 1) % 3 == 0) {
+            if ((i + 1) % 2 == 0) {
                 x = 30;
-                y += 120; // Mover hacia abajo
+                y += 200; // Mover hacia abajo
             }
         }
     }
